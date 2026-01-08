@@ -40,7 +40,7 @@ class Controller {
                 clearInterval(myInterval);
             }
 
-        }, 200);
+        }, 2000);
     }
-    
+
 }

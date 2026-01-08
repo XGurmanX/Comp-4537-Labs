@@ -164,5 +164,5 @@ class Game {
             this.drawStaticButtons()
         }, 1000 * this.numOfButtons);
     }
-    
+
 }
