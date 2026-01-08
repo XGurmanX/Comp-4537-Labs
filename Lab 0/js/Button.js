@@ -14,15 +14,8 @@ class Button {
         this.left = left;
     }
 
-    buttonClick() {
-        console.log("Button " + this.order + " clicked");
+    setRandomPosition() {
+        this.top = Math.floor(Math.random() * 500) + "px";
+        this.left = Math.floor(Math.random() * 500) + "px";
     }
-
-    // addClickListener() {
-    //     const buttonElement = document.createElement("button");
-    //     console.log("addClickListener called") //REMOVE
-    //     console.log(buttonElement.order)
-
-    // }
-
-} 
+}
