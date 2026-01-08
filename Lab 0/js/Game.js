@@ -162,6 +162,8 @@ class Game {
             this.arrayOfButtonsClicked = []
             this.numOfButtons = 0
             this.drawStaticButtons()
+            const startButton = document.getElementById("startButton")
+            startButton.disabled = false;
         }, 1000 * this.numOfButtons);
     }
 
