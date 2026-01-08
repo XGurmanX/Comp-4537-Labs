@@ -18,4 +18,5 @@ class Button {
         this.top = Math.floor(Math.random() * 500) + "px";
         this.left = Math.floor(Math.random() * 500) + "px";
     }
+    
 }

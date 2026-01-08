@@ -6,12 +6,17 @@ class Controller {
         if (this.numOfButtons >= 4 && this.numOfButtons <= 7) {
             this.game.createButtons(this.numOfButtons)
         } else {
-            alert(numberRangeErrorMsg)
+            this.numOfButtons = undefined;
+            alert(MESSAGES.numberRangeErrorMsg)
         }
     }
 
     startGame() {
-        this.startDelayedButtons()
+        if (this.numOfButtons != undefined) {
+            const startButton = document.getElementById("startButton")
+            startButton.disabled = true;
+            this.startDelayedButtons()
+        }
     }
 
     startDelayedButtons() {
@@ -25,9 +30,9 @@ class Controller {
     }
 
     drawShuffledButtons() {
-        var counter = 0;
+        let counter = 0;
 
-        var myInterval = setInterval(() => {
+        const myInterval = setInterval(() => {
             counter++;
             this.game.drawAbsoluteButtons(counter)
                   
@@ -35,6 +40,7 @@ class Controller {
                 clearInterval(myInterval);
             }
 
-        }, 2000);
+        }, 200);
     }
+    
 }

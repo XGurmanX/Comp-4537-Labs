@@ -24,9 +24,9 @@ class Game {
 
     getRandomColor() {
         while (true) {
-            var x = Math.random() * this.arrayOfColors.length
+            let x = Math.random() * this.arrayOfColors.length
             x = Math.floor(x)
-            var color = this.arrayOfColors[x]
+            let color = this.arrayOfColors[x]
             this.arrayOfColorsUsed.push(color)
             this.arrayOfColors.splice(x, 1)
             return color
@@ -47,7 +47,7 @@ class Game {
         buttonContainer.innerHTML = ""
 
         this.arrayOfButtons.forEach(button => {
-            var element = document.createElement("button")
+            let element = document.createElement("button")
 
             element.style.position = "static"
             element.style.width = button.width
@@ -68,7 +68,7 @@ class Game {
 
             button.setRandomPosition()
 
-            var element = document.createElement("button")
+            let element = document.createElement("button")
 
             element.style.position = "absolute"
             element.style.width = button.width
@@ -96,33 +96,51 @@ class Game {
     
     buttonClicked(button) {
         this.arrayOfButtonsClicked.push(button)
-        this.checkButtonPicked()
+        this.checkButtonPicked(button)
     }
 
-    checkButtonPicked() {
+    checkButtonPicked(button) {
         for (let i = 0; i < this.arrayOfButtonsClicked.length; i++) {
             if (this.arrayOfButtonsClicked[i].order != i + 1) {
-                alert(gameOverMsg)
+                alert(MESSAGES.gameOverMsg)
                 this.endGame()
                 return
-                
             }
-            if (i == this.arrayOfButtonsClicked.length - 1) {
-            }
+
         }
+
+        if (button.order == this.arrayOfButtonsClicked.length) {
+            this.revealButtonOrder(button)
+        }
+
         if (this.arrayOfButtonsClicked.length == this.numOfButtons) {
-            alert(gameWinMsg)
+            alert(MESSAGES.gameWinMsg)
             this.endGame()
             return
         }
     }
 
-    revealButtonOrder() {
+    revealButtonOrder(button) {
+        const buttonContainer = document.getElementById("ButtonContainer")
+
+        let element = buttonContainer.children[button.order - 1]
+
+        element.style.position = "absolute"
+        element.style.width = button.width
+        element.style.height = button.height
+        element.style.backgroundColor = button.color
+        element.style.top = button.top
+        element.style.left = button.left
+        element.textContent = button.order
+
+    }
+
+    revealAllButtonOrder() {
         const buttonContainer = document.getElementById("ButtonContainer")
         buttonContainer.innerHTML = ""
 
         this.arrayOfButtons.forEach(button => {
-            var element = document.createElement("button")
+            const element = document.createElement("button")
 
             element.style.position = "absolute"
             element.style.width = button.width
@@ -137,7 +155,7 @@ class Game {
     }
 
     endGame() {
-        this.revealButtonOrder()
+        this.revealAllButtonOrder()
 
         setTimeout(() => {
             this.arrayOfButtons = []
@@ -146,4 +164,5 @@ class Game {
             this.drawStaticButtons()
         }, 1000 * this.numOfButtons);
     }
+    
 }
