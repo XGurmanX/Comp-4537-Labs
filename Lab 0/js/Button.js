@@ -14,6 +14,15 @@ class Button {
         this.left = left;
     }
 
-    
+    buttonClick() {
+        console.log("Button " + this.order + " clicked");
+    }
+
+    // addClickListener() {
+    //     const buttonElement = document.createElement("button");
+    //     console.log("addClickListener called") //REMOVE
+    //     console.log(buttonElement.order)
+
+    // }
 
 } 
