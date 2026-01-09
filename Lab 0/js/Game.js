@@ -73,10 +73,10 @@ class Game {
         
         });
 
-        if (index === this.numOfButtons) {
+        if (index == this.numOfButtons) {
             buttonContainer.addEventListener("click", (event) => {
                 this.arrayOfButtons.forEach(button => {
-                    if (event.target.dataset.order === button.order) {
+                    if (event.target.dataset.order == button.order) {
                         this.buttonClicked(button)
                     }
                 });
@@ -87,7 +87,6 @@ class Game {
     }
     
     buttonClicked(button) {
-        console.log("button clicked", button)
         this.arrayOfButtonsClicked.push(button)
         this.checkButtonPicked(button)
     }
@@ -102,11 +101,11 @@ class Game {
 
         }
 
-        if (button.order === this.arrayOfButtonsClicked.length) {
+        if (button.order == this.arrayOfButtonsClicked.length) {
             this.revealButtonOrder(button)
         }
 
-        if (this.arrayOfButtonsClicked.length === this.numOfButtons) {
+        if (this.arrayOfButtonsClicked.length == this.numOfButtons) {
             alert(MESSAGES.gameWinMsg)
             this.endGame()
         }

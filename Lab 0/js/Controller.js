@@ -16,7 +16,6 @@ class Controller {
             const startButton = document.getElementById("startButton")
             startButton.disabled = true;
             this.startDelayedButtons()
-
         }
     }
 
