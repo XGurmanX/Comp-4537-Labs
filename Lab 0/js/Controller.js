@@ -16,6 +16,7 @@ class Controller {
             const startButton = document.getElementById("startButton")
             startButton.disabled = true;
             this.startDelayedButtons()
+
         }
     }
 
@@ -23,7 +24,6 @@ class Controller {
         this.game.drawStaticButtons()
 
         setTimeout(() => {
-
             this.drawShuffledButtons()
         }, 1000 * (this.numOfButtons - 2));
 

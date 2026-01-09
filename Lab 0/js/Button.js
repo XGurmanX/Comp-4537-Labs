@@ -9,14 +9,9 @@ class Button {
         this.order = order;
     }
 
-    setLocation(top, left) {
-        this.top = top;
-        this.left = left;
-    }
-
     setRandomPosition() {
         this.top = Math.floor(Math.random() * 500) + "px";
         this.left = Math.floor(Math.random() * 500) + "px";
     }
-    
+
 }

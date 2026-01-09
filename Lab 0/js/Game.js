@@ -33,15 +33,6 @@ class Game {
         }
     }
 
-    setRandomPositions() {
-        this.arrayOfButtons.forEach(element => {
-            element.setLocation(
-                Math.floor((Math.random() * 500) + 100) + "px",
-                Math.floor(Math.random() * 500) + "px"
-            )
-        });
-    }
-
     drawStaticButtons() {
         const buttonContainer = document.getElementById("ButtonContainer")
         buttonContainer.innerHTML = ""
@@ -82,26 +73,28 @@ class Game {
         
         });
 
-        if (index == this.numOfButtons) {
+        if (index === this.numOfButtons) {
             buttonContainer.addEventListener("click", (event) => {
                 this.arrayOfButtons.forEach(button => {
-                    if (event.target.dataset.order == button.order) {
+                    if (event.target.dataset.order === button.order) {
                         this.buttonClicked(button)
                     }
                 });
             });
+            this.state = "test"
         }
 
     }
     
     buttonClicked(button) {
+        console.log("button clicked", button)
         this.arrayOfButtonsClicked.push(button)
         this.checkButtonPicked(button)
     }
 
     checkButtonPicked(button) {
         for (let i = 0; i < this.arrayOfButtonsClicked.length; i++) {
-            if (this.arrayOfButtonsClicked[i].order != i + 1) {
+            if (this.arrayOfButtonsClicked[i].order !== i + 1) {
                 alert(MESSAGES.gameOverMsg)
                 this.endGame()
                 return
@@ -109,14 +102,13 @@ class Game {
 
         }
 
-        if (button.order == this.arrayOfButtonsClicked.length) {
+        if (button.order === this.arrayOfButtonsClicked.length) {
             this.revealButtonOrder(button)
         }
 
-        if (this.arrayOfButtonsClicked.length == this.numOfButtons) {
+        if (this.arrayOfButtonsClicked.length === this.numOfButtons) {
             alert(MESSAGES.gameWinMsg)
             this.endGame()
-            return
         }
     }
 
