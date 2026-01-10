@@ -4,6 +4,9 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+// Expose the Labs folder
+app.use("/Labs", express.static(path.join(__dirname, "Labs")));
+
 // Default → LabTest
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "Labs", "LabTest", "index.html"));
