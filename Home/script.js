@@ -1,7 +1,6 @@
 const labs = [
-  { name: "Lab 0", path: "/Labs/Lab0/" },
-  { name: "Lab 1", path: "/Labs/Lab1/" },
-  { name: "Lab Test", path: "/Labs/LabTest/" }
+  { name: "Lab 0", path: "/Lab0/" },
+  { name: "Lab Test", path: "/LabTest/" }
 ];
 
 const container = document.getElementById("labs");
