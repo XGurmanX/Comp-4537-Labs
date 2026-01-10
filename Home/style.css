@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: #050816;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: white;
+}
+
+/* Animated gradient background */
+.background {
+  position: absolute;
+  inset: -50%;
+  background: linear-gradient(120deg, #2563eb, #9333ea, #06b6d4);
+  animation: gradient 12s ease infinite;
+  filter: blur(120px);
+}
+
+@keyframes gradient {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  max-width: 700px;
+  padding: 40px 30px 30px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.8rem;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  margin-top: 6px;
+  margin-bottom: 28px;
+  color: #cbd5f5;
+}
+
+.labs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 18px;
+}
+
+.lab-btn {
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.08);
+  cursor: pointer;
+  transition: 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.lab-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: translateX(-100%);
+  transition: 0.6s ease;
+}
+
+.lab-btn:hover::after {
+  transform: translateX(100%);
+}
+
+.lab-btn:hover {
+  transform: translateY(-6px) scale(1.02);
+  background: rgba(255,255,255,0.15);
+}
+
+.lab-btn span {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+footer {
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #a5b4fc;
+}
