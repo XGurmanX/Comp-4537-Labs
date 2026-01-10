@@ -1,12 +1,5 @@
-import express from "express";
-const app = express();
-
 const PORT = process.env.PORT || 8080;
 
-app.get("/", (req, res) => {
-  res.send("Comp 4537 Cloud Run backend is live 🚀");
-});
-
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
