@@ -50,8 +50,17 @@ h1 {
 
 .subtitle {
   margin-top: 6px;
-  margin-bottom: 28px;
+  margin-bottom: 12px;
   color: #cbd5f5;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-bottom: 28px;
 }
 
 .labs {
@@ -91,6 +100,19 @@ h1 {
 .lab-btn span {
   font-size: 1.1rem;
   font-weight: 600;
+  pointer-events: none;
+}
+
+.divider {
+  margin: 32px 0 10px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #a5b4fc, transparent);
+}
+
+.coming {
+  font-size: 0.8rem;
+  color: #c7d2fe;
+  opacity: 0.7;
 }
 
 footer {
