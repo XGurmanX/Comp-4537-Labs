@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.get("/", (req, res) => {
-  res.send("Comp 4537 Cloud Run server is working.");
+  res.send("Comp 4537 Cloud Run server is working!!");
 });
 
 app.listen(PORT, "0.0.0.0", () => {
