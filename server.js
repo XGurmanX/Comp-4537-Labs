@@ -11,8 +11,9 @@ const PORT = process.env.PORT || 8080;
 app.use("/home", express.static(path.join(__dirname, "Home")));
 
 // Serve labs
+app.use("/LabTest", express.static(path.join(__dirname, "Labs", "Lab Test")));
 app.use("/Lab0", express.static(path.join(__dirname, "Labs", "Lab 0")));
-app.use("/LabTest", express.static(path.join(__dirname, "Labs", "LabTest")));
+app.use("/Lab1", express.static(path.join(__dirname, "Labs", "Lab 1")));
 
 // Optional: redirect root to home
 app.get("/", (req, res) => {
