@@ -1,9 +1,17 @@
 #readerBtn, #writerBtn {
-    text-decoration: none;
+    background-color: white;
     color: black;
     font-weight: bold;
     text-align: center;
-    margin-top: 20px;
-    background-color: azure;
+    text-decoration: none;
+    margin-top: 10px;
     padding: 10px;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+#readerBtn:hover, #writerBtn:hover {
+    background-color: darkgray;
+    color: white;
+    cursor: pointer;
 }
