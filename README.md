@@ -14,7 +14,7 @@ Server is Run locally
  
 ## WorkFlow
 - All new work and changes are pushed to **dev** branch. 
-- After completion and testing locally it it then merged with the **main** branch
+- After completion and testing locally it is then merged with the **main** branch
 - Merging to the main branch then activates a trigger on the Cloud Run on Google Cloud
 - This trigger rebuilds the server with the new changes.
     - *Rebuilds can take upto 1-2 minutes*

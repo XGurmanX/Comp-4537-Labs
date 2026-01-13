@@ -1,0 +1,9 @@
+#readerBtn, #writerBtn {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    background-color: azure;
+    padding: 10px;
+}
