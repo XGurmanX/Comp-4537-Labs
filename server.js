@@ -1,6 +1,3 @@
-// node server.js - to start the server
-// http://localhost:8080 - to access the server
-
 const express = require("express");
 const path = require("path");
 
