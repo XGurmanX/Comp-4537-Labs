@@ -1,6 +1,6 @@
 class Writer {
     constructor() {
-
+        
     }
 
     testWriter() {
