@@ -4,4 +4,11 @@ const MESSAGES = {
     message3: "This job would be a lot easier if it wasn't for the users",
     message4: "I’d tell you an UDP joke, but I wouldn’t know if you got it.",
     message5: "There are 10 types of people in the world: those who understand binary, and those who don’t."
-}   
+}
+
+for (const key in MESSAGES) {
+    window.localStorage.setItem(key, MESSAGES[key]);
+}
+
+// Use an event listener to invoke a loader for read when a new element is added 
+// to local storage

@@ -19,7 +19,6 @@ class Notes {
                 removeButton.addEventListener('click', () => this.remove(note.key));
                 noteDiv.appendChild(removeButton);
             }
-            console.log(noteDiv)
             container.appendChild(noteDiv);
         });
         if (this.type === "writer") {
@@ -37,8 +36,9 @@ class Notes {
     }
 
     createNotes() {
-        for (const key in MESSAGES) {
-            const value = MESSAGES[key]
+        for (const key in window.localStorage) {
+            window.localStorage.hasOwnProperty(key)
+            const value = window.localStorage.getItem(key);
             this.arrayOfNotes.push(new Note(key, value));
         }
         this.displayNotes();
@@ -49,7 +49,6 @@ class Notes {
             if (note.key === key) {
                 const index = this.arrayOfNotes.indexOf(note);
                 if (index > -1) {
-                    console.log("removing note:", note)
                     this.arrayOfNotes.splice(index, 1);
                 }
             }
