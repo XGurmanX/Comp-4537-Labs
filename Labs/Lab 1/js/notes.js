@@ -6,26 +6,51 @@ class Notes {
 
     displayNotes() {
         let container = document.getElementById("noteContainer");
-        for (let note of this.arrayOfNotes) {
+        container.innerHTML = '';
+        this.arrayOfNotes.forEach(note => {
             let noteDiv = document.createElement("div");
+            noteDiv.id = "notes"
             noteDiv.innerText = note.text;
             if (this.type === "writer") {
-                noteDiv.appendChild(note.removeButton);
+                let removeButton = document.createElement('button')
+                removeButton.innerText = 'Remove'
+                removeButton.id = 'removeButton'
+                removeButton.addEventListener('click', () => this.remove(note.key));
+                noteDiv.appendChild(removeButton);
             }
+            console.log(noteDiv)
             container.appendChild(noteDiv);
-        }
+        });
+        let addButton = document.createElement('button');
+        addButton.id = 'addButton'
+        addButton.innerText = 'Add Note';
+        addButton.addEventListener('click', () => this.add("", "message" + (this.arrayOfNotes.length + 1)));
+        container.appendChild(addButton);
     }
 
     createNotes() {
         for (const key in MESSAGES) {
             const value = MESSAGES[key]
-            this.arrayOfNotes.push(new Note(key, value, this.type));
+            this.arrayOfNotes.push(new Note(key, value));
         }
-        console.log(this.arrayOfNotes);
         this.displayNotes();
     }
 
-    add(note) {
-        this.arrayOfNotes.push(note);
+    remove(key) {
+        this.arrayOfNotes.forEach(note => {
+            if (note.key === key) {
+                const index = this.arrayOfNotes.indexOf(note);
+                if (index > -1) {
+                    console.log("removing note:", note)
+                    this.arrayOfNotes.splice(index, 1);
+                }
+            }
+        });
+        this.displayNotes();
+    }
+
+    add(text, key) {
+        this.arrayOfNotes.push(new Note(key, text));
+        this.displayNotes();
     }
 }

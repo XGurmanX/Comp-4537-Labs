@@ -8,5 +8,7 @@ class Writer {
     }
 }
 
-let writer = new Writer();
-writer.startWriter();
+document.addEventListener("DOMContentLoaded", () => {
+    const writer = new Writer();
+    writer.startWriter();
+});
