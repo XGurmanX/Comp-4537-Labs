@@ -1,14 +1,12 @@
-import { TEST } from "../lang/messages/en/user.js"
-
 class Writer {
     constructor() {
-        this.notes = new Notes("writer")
+        this.notes = new Notes("writer");
     }
 
     startWriter() {
-        this.notes.createNotes()
+        this.notes.createNotes();
     }
 }
 
-let writer = new Writer()
-writer.startWriter()
+let writer = new Writer();
+writer.startWriter();

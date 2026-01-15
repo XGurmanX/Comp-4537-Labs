@@ -1,5 +1,3 @@
-import { TEST } from "../lang/messages/en/user.js"
-
 class Reader {
     constructor() {
         this.notes = new Notes("reader")
@@ -7,6 +5,7 @@ class Reader {
 
     startReader() {
         this.notes.createNotes()
+        console.log(MESSAGES.message1)
     }
 }
 

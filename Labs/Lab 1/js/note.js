@@ -7,17 +7,11 @@ class Note {
             this.removeButton = document.createElement('button')
             this.removeButton.addEventListener('click', () => this.remove())
             this.removeButton.innerText = 'Remove'
-        } else {
-            this.removeButton = null
-        }
+        } 
     }
 
     store() {
         localStorage.setItem(this.key, this.text)
-    }
-
-    add() {
-        
     }
 
     remove() {

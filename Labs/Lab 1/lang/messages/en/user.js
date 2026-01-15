@@ -1,4 +1,4 @@
-export const TEST = {
+const MESSAGES = {
     message1: "Never trust a computer you can't throw out a window.",
     message2: "When you ask a question thats meant to return a boolean and you end up with a string.",
     message3: "This job would be a lot easier if it wasn't for the users",
