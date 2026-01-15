@@ -1,19 +1,11 @@
 class Note {
-    constructor(text, removeButton) {
+    constructor(key, text) {
+        this.key = key
         this.text = text
-        this.removeButton = removeButton
     }
 
     store() {
-        
+        localStorage.setItem(this.key, this.text)
     }
-
-    // add() {
-        
-    // }
-
-    // remove() {
-
-    // }
 
 }

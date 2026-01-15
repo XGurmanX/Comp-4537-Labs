@@ -81,9 +81,7 @@ class Game {
                     }
                 });
             });
-            this.state = "test"
         }
-
     }
     
     buttonClicked(button) {

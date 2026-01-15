@@ -1,12 +1,14 @@
 class Writer {
     constructor() {
-        
+        this.notes = new Notes("writer");
     }
 
-    testWriter() {
-        console.log("Test writer activated")
+    startWriter() {
+        this.notes.createNotes();
     }
 }
 
-let writer = new Writer()
-writer.testWriter()
+document.addEventListener("DOMContentLoaded", () => {
+    const writer = new Writer();
+    writer.startWriter();
+});

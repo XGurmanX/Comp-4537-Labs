@@ -1,12 +1,14 @@
 class Reader {
     constructor() {
-
+        this.notes = new Notes("reader");
     }
 
-    testReader() {
-        console.log("Test reader activated")
+    startReader() {
+        this.notes.createNotes();
     }
 }
 
-let reader = new Reader()
-reader.testReader()
+document.addEventListener("DOMContentLoaded", () => {
+    const reader = new Reader();
+    reader.startReader();
+});

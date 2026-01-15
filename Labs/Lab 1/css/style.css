@@ -30,3 +30,33 @@
     border-radius: 5px;
     border: 2px solid black;
 }
+
+#notes {
+    margin-top: 20px;
+    display: static;
+    flex-direction: column;
+    background-color: #EBDCCB;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 300px;
+}
+
+#removeButton, #addButton {
+    display: block;
+    margin-top: 10px;
+    background-color: #B2A3B5;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#addButton {
+    margin-top: 20px;
+}
+
+#removeButton:hover, #addButton:hover {
+    background-color: #91818A;
+}
