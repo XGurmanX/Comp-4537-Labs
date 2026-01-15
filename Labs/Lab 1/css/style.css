@@ -35,7 +35,7 @@
     margin-top: 20px;
     display: static;
     flex-direction: column;
-    background-color: #E8DDB5;
+    background-color: #EBDCCB;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -45,7 +45,7 @@
 #removeButton, #addButton {
     display: block;
     margin-top: 10px;
-    background-color: #666A86;
+    background-color: #B2A3B5;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -58,5 +58,5 @@
 }
 
 #removeButton:hover, #addButton:hover {
-    background-color: #4B4E6D;
+    background-color: #91818A;
 }

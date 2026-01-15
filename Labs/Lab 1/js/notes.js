@@ -1,6 +1,7 @@
 class Notes {
     constructor(type) {
         this.type = type;
+        this.localStorage = window.localStorage;
         this.arrayOfNotes = [];
     }
 
@@ -21,11 +22,18 @@ class Notes {
             console.log(noteDiv)
             container.appendChild(noteDiv);
         });
-        let addButton = document.createElement('button');
-        addButton.id = 'addButton'
-        addButton.innerText = 'Add Note';
-        addButton.addEventListener('click', () => this.add("", "message" + (this.arrayOfNotes.length + 1)));
-        container.appendChild(addButton);
+        if (this.type === "writer") {
+            let addButton = document.createElement('button');
+            addButton.id = 'addButton'
+            addButton.innerText = 'Add Note';
+            addButton.addEventListener('click', () => this.add("", "message" + (this.arrayOfNotes.length + 1)));
+            container.appendChild(addButton);
+        }
+        if (this.type === "reader") {
+            let myInterval = setInterval(() => {
+                this.displayNotes();
+            }, 2000);
+        }
     }
 
     createNotes() {
