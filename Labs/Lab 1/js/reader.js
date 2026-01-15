@@ -1,12 +1,14 @@
+import { TEST } from "../lang/messages/en/user.js"
+
 class Reader {
     constructor() {
-
+        this.notes = new Notes("reader")
     }
 
-    testReader() {
-        console.log("Test reader activated")
+    startReader() {
+        this.notes.createNotes()
     }
 }
 
 let reader = new Reader()
-reader.testReader()
+reader.startReader()

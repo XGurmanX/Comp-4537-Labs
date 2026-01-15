@@ -1,12 +1,14 @@
+import { TEST } from "../lang/messages/en/user.js"
+
 class Writer {
     constructor() {
-        
+        this.notes = new Notes("writer")
     }
 
-    testWriter() {
-        console.log("Test writer activated")
+    startWriter() {
+        this.notes.createNotes()
     }
 }
 
 let writer = new Writer()
-writer.testWriter()
+writer.startWriter()
