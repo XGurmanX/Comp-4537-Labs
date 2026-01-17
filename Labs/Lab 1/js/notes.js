@@ -36,10 +36,10 @@ class Notes {
     }
 
     createNotes() {
-        for (const key in window.localStorage) {
-            window.localStorage.hasOwnProperty(key)
-            const value = window.localStorage.getItem(key);
-            this.arrayOfNotes.push(new Note(key, value));
+        for (const key in localStorage) {
+            if (localStorage.hasOwnProperty(key)) {
+                this.arrayOfNotes.push(new Note(key, localStorage.getItem(key)));
+            }
         }
         this.displayNotes();
     }
@@ -55,6 +55,8 @@ class Notes {
         });
         this.displayNotes();
     }
+
+
 
     add(text, key) {
         this.arrayOfNotes.push(new Note(key, text));
