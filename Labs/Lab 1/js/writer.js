@@ -4,7 +4,7 @@ class Writer {
     }
 
     startWriter() {
-        this.notes.createNotes();
+        this.notes.displayNotes();
     }
 }
 

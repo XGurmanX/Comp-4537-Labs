@@ -3,9 +3,4 @@ class Note {
         this.key = key
         this.text = text
     }
-
-    store() {
-        localStorage.setItem(this.key, this.text)
-    }
-
 }

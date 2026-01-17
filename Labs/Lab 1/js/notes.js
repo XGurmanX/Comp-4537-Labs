@@ -1,32 +1,36 @@
 class Notes {
     constructor(type) {
         this.type = type;
-        this.localStorage = window.localStorage;
-        this.arrayOfNotes = [];
+        window.localStorage.setItem("size", window.localStorage.length - 1);
+        this.orderedKeys = [];
+        this.makeOrderedKeys()
+
     }
 
     displayNotes() {
         let container = document.getElementById("noteContainer");
         container.innerHTML = '';
-        this.arrayOfNotes.forEach(note => {
+        for (const key of this.orderedKeys) {
+            if (!localStorage.hasOwnProperty(key)) {
+                continue;
+            }
             let noteDiv = document.createElement("div");
             noteDiv.id = "notes"
-            noteDiv.innerText = note.text;
+            noteDiv.innerText = window.localStorage.getItem(key);
             if (this.type === "writer") {
                 let removeButton = document.createElement('button')
                 removeButton.innerText = 'Remove'
                 removeButton.id = 'removeButton'
-                removeButton.addEventListener('click', () => this.remove(note.key));
+                removeButton.addEventListener('click', () => this.removeNote(key));
                 noteDiv.appendChild(removeButton);
             }
-            console.log(noteDiv)
             container.appendChild(noteDiv);
-        });
+        }
         if (this.type === "writer") {
             let addButton = document.createElement('button');
             addButton.id = 'addButton'
             addButton.innerText = 'Add Note';
-            addButton.addEventListener('click', () => this.add("", "message" + (this.arrayOfNotes.length + 1)));
+            addButton.addEventListener('click', () => this.addNote("message" + (parseInt(window.localStorage.getItem("size")) + 1)));
             container.appendChild(addButton);
         }
         if (this.type === "reader") {
@@ -36,29 +40,25 @@ class Notes {
         }
     }
 
-    createNotes() {
-        for (const key in MESSAGES) {
-            const value = MESSAGES[key]
-            this.arrayOfNotes.push(new Note(key, value));
+    removeNote(key) {
+        window.localStorage.removeItem(key);
+        console.log(`Removed note with key: ${key}`);
+        console.log(window.localStorage);
+        this.displayNotes();
+    }
+
+    addNote(key) {
+        let newText = "New note added at key: " + key;
+        console.log(`Adding note with key: ${key}`);
+        window.localStorage.setItem(key, newText);
+        window.localStorage.setItem("size", parseInt(window.localStorage.getItem("size")) + 1);
+        this.displayNotes();
+    }
+
+    makeOrderedKeys() {
+        this.orderedKeys = []
+        for (let i = 1; i <= window.localStorage.length; i++) {
+            this.orderedKeys.push("message" + i);
         }
-        this.displayNotes();
-    }
-
-    remove(key) {
-        this.arrayOfNotes.forEach(note => {
-            if (note.key === key) {
-                const index = this.arrayOfNotes.indexOf(note);
-                if (index > -1) {
-                    console.log("removing note:", note)
-                    this.arrayOfNotes.splice(index, 1);
-                }
-            }
-        });
-        this.displayNotes();
-    }
-
-    add(text, key) {
-        this.arrayOfNotes.push(new Note(key, text));
-        this.displayNotes();
     }
 }
