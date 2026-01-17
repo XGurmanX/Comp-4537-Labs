@@ -9,6 +9,3 @@ const MESSAGES = {
 for (const key in MESSAGES) {
     window.localStorage.setItem(key, MESSAGES[key]);
 }
-
-// Use an event listener to invoke a loader for read when a new element is added 
-// to local storage
