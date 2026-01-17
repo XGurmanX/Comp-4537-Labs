@@ -2,30 +2,32 @@ class Notes {
     constructor(type) {
         this.type = type;
         this.localStorage = window.localStorage;
-        this.arrayOfNotes = [];
     }
 
     displayNotes() {
         let container = document.getElementById("noteContainer");
         container.innerHTML = '';
-        this.arrayOfNotes.forEach(note => {
+        for (const key in localStorage) {
+            if (!localStorage.hasOwnProperty(key)) {
+                continue;
+            }
             let noteDiv = document.createElement("div");
             noteDiv.id = "notes"
-            noteDiv.innerText = note.text;
+            noteDiv.innerText = this.localStorage.getItem(key);
             if (this.type === "writer") {
                 let removeButton = document.createElement('button')
                 removeButton.innerText = 'Remove'
                 removeButton.id = 'removeButton'
-                removeButton.addEventListener('click', () => this.remove(note.key));
+                removeButton.addEventListener('click', () => this.removeNote(key));
                 noteDiv.appendChild(removeButton);
             }
             container.appendChild(noteDiv);
-        });
+        }
         if (this.type === "writer") {
             let addButton = document.createElement('button');
             addButton.id = 'addButton'
             addButton.innerText = 'Add Note';
-            addButton.addEventListener('click', () => this.add("", "message" + (this.arrayOfNotes.length + 1)));
+            addButton.addEventListener('click', () => this.addNote("message" + (this.localStorage.length + 1))); // FIX
             container.appendChild(addButton);
         }
         if (this.type === "reader") {
@@ -35,31 +37,17 @@ class Notes {
         }
     }
 
-    createNotes() {
-        for (const key in localStorage) {
-            if (localStorage.hasOwnProperty(key)) {
-                this.arrayOfNotes.push(new Note(key, localStorage.getItem(key)));
-            }
-        }
+    removeNote(key) {
+        this.localStorage.removeItem(key);
         this.displayNotes();
     }
 
-    remove(key) {
-        this.arrayOfNotes.forEach(note => {
-            if (note.key === key) {
-                const index = this.arrayOfNotes.indexOf(note);
-                if (index > -1) {
-                    this.arrayOfNotes.splice(index, 1);
-                }
-            }
-        });
+    addNote(key) {
+        let newText = prompt("Enter note text:");
+        this.localStorage.setItem(key, newText);
         this.displayNotes();
     }
 
 
 
-    add(text, key) {
-        this.arrayOfNotes.push(new Note(key, text));
-        this.displayNotes();
-    }
 }

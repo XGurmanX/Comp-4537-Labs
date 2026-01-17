@@ -4,7 +4,7 @@ class Reader {
     }
 
     startReader() {
-        this.notes.createNotes();
+        this.notes.displayNotes();
     }
 }
 
