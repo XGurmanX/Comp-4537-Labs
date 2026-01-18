@@ -33,11 +33,6 @@ class Notes {
             addButton.addEventListener('click', () => this.addNote("message" + (parseInt(window.localStorage.getItem("size")) + 1)));
             container.appendChild(addButton);
         }
-        if (this.type === "reader") {
-            let myInterval = setInterval(() => {
-                this.displayNotes();
-            }, 2000);
-        }
     }
 
     removeNote(key) {
@@ -50,9 +45,13 @@ class Notes {
     addNote(key) {
         let newText = "New note added at key: " + key;
         console.log(`Adding note with key: ${key}`);
+        this.orderedKeys.push(key);
+        console
         window.localStorage.setItem(key, newText);
         window.localStorage.setItem("size", parseInt(window.localStorage.getItem("size")) + 1);
-        this.displayNotes();
+        if (this.type === "writer") {
+            this.displayNotes();
+        }
     }
 
     makeOrderedKeys() {

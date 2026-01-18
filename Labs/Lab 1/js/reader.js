@@ -4,7 +4,9 @@ class Reader {
     }
 
     startReader() {
-        this.notes.displayNotes();
+        setInterval(() => {
+            this.notes.displayNotes();
+        }, 2000);
     }
 }
 

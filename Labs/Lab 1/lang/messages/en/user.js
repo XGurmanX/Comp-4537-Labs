@@ -6,6 +6,21 @@ const MESSAGES = {
     message5: "There are 10 types of people in the world: those who understand binary, and those who don’t."
 }
 
-for (const key in MESSAGES) {
-    window.localStorage.setItem(key, MESSAGES[key]);
-}
+/**
+ * On page load, initialize localStorage with predefined messages
+ * if it's the first load. On refresh, retain existing localStorage.
+ * 
+ * Created by Google Chrome AI Overview.
+ * - Prompt: How to load up local storage once on a window, if it refreshs it does not load again
+ * - Prompt given: 2026-01-18
+ */
+window.addEventListener('load', function() {
+    if (!sessionStorage.getItem('isRefreshed')) {
+            
+        for (const key in MESSAGES) {
+            window.localStorage.setItem(key, MESSAGES[key]);
+        }
+
+        sessionStorage.setItem('isRefreshed', 'true');
+    }
+});
