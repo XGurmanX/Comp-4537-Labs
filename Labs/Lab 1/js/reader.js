@@ -12,5 +12,6 @@ class Reader {
 
 document.addEventListener("DOMContentLoaded", () => {
     const reader = new Reader();
+    reader.notes.displayNotes();
     reader.startReader();
 });
