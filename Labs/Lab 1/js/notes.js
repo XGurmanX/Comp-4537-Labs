@@ -51,28 +51,24 @@ class Notes {
      * Update the orderedKeys array to reflect the current keys in localStorage,
      * sorted in ascending order based on the numeric part of the keys.
      * 
-     * Created by ChatGPT.
+     * Created by ChatGPT + Gurman P.
      * - Prompt: How to parse off a constant string from localStorage keys and 
      *           sort them based on the numeric value that follows it
      * - Prompt given: 2026-01-18
      */
     updateOrderedKeys() {
         this.orderedKeys = [];
-
         for (let x in localStorage) {
             if (localStorage.hasOwnProperty(x) && x !== "size") {
                 this.orderedKeys.push(x);
             }
         }
-
-        console.log("Before sort:", this.orderedKeys);
-
+        
         this.orderedKeys.sort((a, b) => {
             const keyA = parseInt(a.replace("message", ""), 10);
             const keyB = parseInt(b.replace("message", ""), 10);
             return keyA - keyB;
         });
 
-        console.log("After sort:", this.orderedKeys);
     }
 }
