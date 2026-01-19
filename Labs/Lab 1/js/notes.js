@@ -1,17 +1,17 @@
 class Notes {
     constructor(type) {
         this.type = type;
-        window.localStorage.setItem("size", window.localStorage.length - 1);
+        window.localStorage.setItem("size", window.localStorage.length - 2); // 2 for isRefreshed and size
         this.orderedKeys = [];
-        this.makeOrderedKeys()
-
+        this.updateOrderedKeys()
     }
 
     displayNotes() {
+        this.updateOrderedKeys()
         let container = document.getElementById("noteContainer");
         container.innerHTML = '';
         for (const key of this.orderedKeys) {
-            if (!localStorage.hasOwnProperty(key)) {
+            if (!localStorage.hasOwnProperty(key) || key === "isRefreshed" || key === "size") {
                 continue;
             }
             let noteDiv = document.createElement("div");
@@ -33,32 +33,42 @@ class Notes {
             addButton.addEventListener('click', () => this.addNote("message" + (parseInt(window.localStorage.getItem("size")) + 1)));
             container.appendChild(addButton);
         }
-        if (this.type === "reader") {
-            let myInterval = setInterval(() => {
-                this.displayNotes();
-            }, 2000);
-        }
     }
-
-    removeNote(key) {
-        window.localStorage.removeItem(key);
-        console.log(`Removed note with key: ${key}`);
-        console.log(window.localStorage);
-        this.displayNotes();
-    }
-
+    
     addNote(key) {
         let newText = "New note added at key: " + key;
-        console.log(`Adding note with key: ${key}`);
         window.localStorage.setItem(key, newText);
         window.localStorage.setItem("size", parseInt(window.localStorage.getItem("size")) + 1);
         this.displayNotes();
     }
 
-    makeOrderedKeys() {
-        this.orderedKeys = []
-        for (let i = 1; i <= window.localStorage.length; i++) {
-            this.orderedKeys.push("message" + i);
+    removeNote(key) {
+        window.localStorage.removeItem(key);
+        this.displayNotes();
+    }
+
+    /**
+     * Update the orderedKeys array to reflect the current keys in localStorage,
+     * sorted in ascending order based on the numeric part of the keys.
+     * 
+     * Created by ChatGPT + Gurman P.
+     * - Prompt: How to parse off a constant string from localStorage keys and 
+     *           sort them based on the numeric value that follows it
+     * - Prompt given: 2026-01-18
+     */
+    updateOrderedKeys() {
+        this.orderedKeys = [];
+        for (let x in localStorage) {
+            if (localStorage.hasOwnProperty(x) && x !== "size" && x !== "isRefreshed") {
+                this.orderedKeys.push(x);
+            }
         }
+        
+        this.orderedKeys.sort((a, b) => {
+            const keyA = parseInt(a.replace("message", ""), 10);
+            const keyB = parseInt(b.replace("message", ""), 10);
+            return keyA - keyB;
+        });
+
     }
 }
