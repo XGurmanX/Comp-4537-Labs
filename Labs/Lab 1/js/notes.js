@@ -1,7 +1,7 @@
 class Notes {
     constructor(type) {
         this.type = type;
-        window.localStorage.setItem("size", window.localStorage.length - 1);
+        window.localStorage.setItem("size", window.localStorage.length - 2); // 2 for isRefreshed and size
         this.orderedKeys = [];
         this.updateOrderedKeys()
     }
@@ -11,7 +11,7 @@ class Notes {
         let container = document.getElementById("noteContainer");
         container.innerHTML = '';
         for (const key of this.orderedKeys) {
-            if (!localStorage.hasOwnProperty(key)) {
+            if (!localStorage.hasOwnProperty(key) || key === "isRefreshed" || key === "size") {
                 continue;
             }
             let noteDiv = document.createElement("div");
@@ -59,7 +59,7 @@ class Notes {
     updateOrderedKeys() {
         this.orderedKeys = [];
         for (let x in localStorage) {
-            if (localStorage.hasOwnProperty(x) && x !== "size") {
+            if (localStorage.hasOwnProperty(x) && x !== "size" && x !== "isRefreshed") {
                 this.orderedKeys.push(x);
             }
         }

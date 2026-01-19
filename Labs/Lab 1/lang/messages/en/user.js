@@ -15,12 +15,12 @@ const MESSAGES = {
  * - Prompt given: 2026-01-18
  */
 window.addEventListener('load', function() {
-    if (!sessionStorage.getItem('isRefreshed')) {
+    if (!localStorage.getItem('isRefreshed')) {
             
         for (const key in MESSAGES) {
             window.localStorage.setItem(key, MESSAGES[key]);
         }
 
-        sessionStorage.setItem('isRefreshed', 'true');
+        localStorage.setItem('isRefreshed', 'true');
     }
 });
