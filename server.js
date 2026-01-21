@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 8080;
 app.use("/home", express.static(path.join(__dirname, "Home")));
 
 // Serve labs
-app.use("/LabTest", express.static(path.join(__dirname, "Labs", "Lab Test")));
+app.use("/LabTemplate", express.static(path.join(__dirname, "Labs", "Lab Template")));
 app.use("/Lab0", express.static(path.join(__dirname, "Labs", "Lab 0")));
 app.use("/Lab1", express.static(path.join(__dirname, "Labs", "Lab 1")));
 app.use("/Lab2", express.static(path.join(__dirname, "Labs", "Lab 2")));
