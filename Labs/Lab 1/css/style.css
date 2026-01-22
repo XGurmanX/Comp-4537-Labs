@@ -1,66 +1,73 @@
-#readerBtn, #writerBtn {
-    background-color: white;
-    color: black;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 2px solid black;
+#readerBtn,
+#writerBtn {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid black;
 }
 
-#readerBtn:hover, #writerBtn:hover, #backBtn:hover {
-    background-color: darkgray;
-    color: white;
-    cursor: pointer;
+#readerBtn:hover,
+#writerBtn:hover,
+#backBtn:hover {
+  background-color: darkgray;
+  color: white;
+  cursor: pointer;
 }
 
 #backBtn {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;  
-    background-color: white;
-    color: black;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 2px solid black;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid black;
 }
 
 #notes {
-    margin-top: 20px;
-    display: static;
-    flex-direction: column;
-    background-color: #EBDCCB;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    width: 300px;
+  margin-top: 20px;
+  display: static;
+  flex-direction: column;
+  background-color: #ebdccb;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 300px;
 }
 
-#removeButton, #addButton {
-    display: block;
-    margin-top: 10px;
-    background-color: #B2A3B5;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+#removeButton,
+#addButton,
+#editButton {
+  display: flex;
+  margin-top: 10px;
+  background-color: #b2a3b5;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 #addButton {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
-#removeButton:hover, #addButton:hover {
-    background-color: #91818A;
+#removeButton:hover,
+#addButton:hover,
+#editButton:hover {
+  background-color: #91818a;
 }
-
+    
 #timeContainer {
   display: flex;
   justify-content: center;
