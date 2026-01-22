@@ -64,7 +64,7 @@ class Notes {
   }
 
   editNote(key) {
-    text = prompt("Enter your new text");
+    let text = prompt("Enter your new text");
     window.localStorage.setItem(key, text);
     this.displayNotes();
   }
