@@ -2,8 +2,8 @@ const labs = [
   { name: "Lab 0", path: "/Lab0/" },
   { name: "Lab 1", path: "/Lab1/" },
   { name: "Lab 2", path: "/Lab2/" },
+  { name: "Lab 3", path: "/Lab3/" },
   { name: "Lab Template", path: "/LabTemplate/" }
-  // Add more labs as needed
 ];
 
 const container = document.getElementById("labs");
