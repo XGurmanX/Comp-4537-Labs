@@ -1,5 +1,41 @@
+# Node.js
 node_modules/
-.env
-.DS_Store
 npm-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+.env.*
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# IDEs / Editors
 .idea/
+.vscode/
+*.swp
+
+# Docker
+.dockerignore
+**/docker-compose.override.yml
+
+# Logs
+logs/
+*.log
+
+# Build / temp
+dist/
+build/
+tmp/
+
+# Coverage
+coverage/
+
+# Google Cloud / credentials
+*.key.json
+gcloud-debug.log
+
+# Mac metadata
+.AppleDouble
+.LSOverride
