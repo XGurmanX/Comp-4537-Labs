@@ -18,7 +18,7 @@ module.exports = class Server {
     handleRequest(request, response) {
         const parsedUrl = url.parse(request.url, true);
 
-        if (parsedUrl.pathname === '/Lab3/getDate/') {
+        if (parsedUrl.pathname === '/getDate/') {
             const name = parsedUrl.query.name;
 
             if (!name) {
