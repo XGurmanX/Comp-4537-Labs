@@ -1,5 +1,3 @@
-
-
 class Messages {
 
     static greeting(name, date) {
