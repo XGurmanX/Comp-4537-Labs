@@ -11,35 +11,33 @@ module.exports = class Server {
 
     start() {
         const server = http.createServer(this.handleRequest.bind(this));
-        server.listen(this.port, () => {
-            console.log(`Server running on port ${this.port}`)
-        });
+        server.listen(this.port, () => {});
     }
 
 
     handleRequest(request, response) {
         const parsedUrl = url.parse(request.url, true);
 
-        // if (parsedUrl.pathname === '/COMP4537/labs/3/getDate/') {
-        if (parsedUrl.pathname) {
+        console.log(`Received request for ${parsedUrl.pathname}`);
+
+        if (parsedUrl.pathname === '/Lab3/getDate/') {
             const name = parsedUrl.query.name;
-            console.log('Received name:', name);
 
             if (!name) {
                 response.writeHead(400, { 'Content-Type': 'text/html' });
-                response.end('<span style="color:red">Name is required</span>');
+                response.end(Message.nameIsMissing());
                 return;
             }
 
             const date = Utils.getDate();
-            const message = Message.greeting(name, date);
 
             response.writeHead(200, { 'Content-Type': 'text/html' });
-            response.end(`<span style="color:blue">${message}</span>`);
+            response.end(Message.greeting(name, date));
             return;
         }
 
         response.writeHead(404, { 'Content-Type': 'text/html' });
-        response.end('<span style="color:red">404 Not Found</span>');
+        response.end(Message.notFound());
     }
+
 }
