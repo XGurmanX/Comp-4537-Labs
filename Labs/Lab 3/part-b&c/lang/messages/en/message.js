@@ -11,6 +11,15 @@ class Messages {
     static notFound() {
         return `<span style="color:red">404 Not Found</span>`;
     }
+
+    static textIsMissing() {
+        return '<span style="color:red">Text is required</span>';
+    }
+
+    static fileWritten(filePath) {
+        return `<span style="color:green">File has been written to ${filePath}</span>`;
+    }
+    
 }
 
 module.exports = Messages;

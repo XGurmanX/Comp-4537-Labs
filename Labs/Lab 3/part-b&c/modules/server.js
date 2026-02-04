@@ -1,5 +1,6 @@
 const http = require('http');
 const url = require('url');
+const path = require('path');
 const Utils = require('./utils');
 const Message = require('../lang/messages/en/message');
 
@@ -31,6 +32,41 @@ module.exports = class Server {
 
             response.writeHead(200, { 'Content-Type': 'text/html' });
             response.end(Message.greeting(name, date));
+            return;
+        }
+
+        if (parsedUrl.pathname === '/writeFile/') {
+            const text = parsedUrl.query.text;
+
+            if (!text) {
+                response.writeHead(400, { 'Content-Type': 'text/html' });
+                response.end(Message.textIsMissing());
+                return;
+            }
+
+            const filePath = path.join(__dirname, '../data/file.txt');
+
+            Utils.appendToFile(filePath, text);
+
+            response.writeHead(200, { 'Content-Type': 'text/html' });
+            response.end(Message.fileWritten('file.txt'));
+            return;
+        }
+
+        if (parsedUrl.pathname.startsWith('/readFile/')) {
+            const fileName = parsedUrl.pathname.replace('/readFile/', '');
+            const filePath = path.join(__dirname, '../data/', fileName);
+
+            if (!Utils.fileExists(filePath)) {
+                response.writeHead(404, { 'Content-Type': 'text/html' });
+                response.end(`<span style="color:red">404 File Not Found: ${fileName}</span>`);
+                return;
+            }
+
+            const content = Utils.readFile(filePath);
+
+            response.writeHead(200, { 'Content-Type': 'text/html' });
+            response.end(`<pre>${content}</pre>`);
             return;
         }
 

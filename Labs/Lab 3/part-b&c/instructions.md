@@ -82,11 +82,11 @@ gcloud run deploy comp-4537-lab3-part-b-and-c
 ## Verify Deployment
 
 ### Part B:
-https://comp-4537-lab3.gurmanpannu.dev/getDate/?name=Gurman
+• B: https://comp-4537-lab3.gurmanpannu.dev/getDate/?name=Gurman
 
 ### Part C:
-add link...
+• C.1: https://comp-4537-lab3.gurmanpannu.dev/writeFile/?text=BCIT
 
-add link...
+• C.2: https://comp-4537-lab3.gurmanpannu.dev/readFile/file.txt
 
 ---
