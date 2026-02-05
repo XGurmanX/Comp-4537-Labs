@@ -11,8 +11,8 @@ Server is Run locally
 - open at http://localhost:8080
 
 
- 
 ## WorkFlow
+
 - All new work and changes are pushed to **dev** branch. 
 - After completion and testing locally it is then merged with the **main** branch
 - Merging to the main branch then activates a trigger on the Cloud Run on Google Cloud
