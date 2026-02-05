@@ -1,0 +1,10 @@
+#Lab3Buttons {
+    padding: 10px;
+    margin-right: 10px;
+    background-color: lightblue;
+}
+
+#Lab3Buttons:hover {
+    box-shadow: 10px;
+    background-color: turquoise;
+}
