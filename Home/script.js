@@ -3,6 +3,7 @@ const labs = [
   { name: "Lab 1", path: "/Lab1/" },
   { name: "Lab 2", path: "/Lab2/" },
   { name: "Lab 3", path: "/Lab3/" },
+  { name: "Lab 4", path: "/Lab4/" },
   { name: "Lab Template", path: "/LabTemplate/" }
 ];
 
