@@ -21,4 +21,4 @@ Server is Run locally
 - Test server with new changes to make sure its works on the server
 
 ## Test Lock
-Hello world
+Hello World
