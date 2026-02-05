@@ -19,3 +19,4 @@ Server is Run locally
 - This trigger rebuilds the server with the new changes.
     - *Rebuilds can take upto 1-2 minutes*
 - Test server with new changes to make sure its works on the server
+- hllo
