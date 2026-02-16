@@ -1,5 +1,9 @@
 // ===== CONFIG =====
-const API_BASE = "https://YOUR_SERVER2_DOMAIN/lab5/api/v1";
+// Attribution: Generated with AI assistance and manually verified/edited.
+const API_BASE =
+    window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+        ? "http://localhost:8081/lab4/api/v1"
+        : "https://YOUR_SERVER2_DOMAIN/lab4/api/v1";
 
 // ===== ELEMENTS =====
 const insertBtn = document.getElementById("insertBtn");
@@ -14,6 +18,12 @@ insertBtn.addEventListener("click", async () => {
         const response = await fetch(`${API_BASE}/insert`, {
             method: "POST"
         });
+
+        if (!response.ok) {
+            const text = await response.text();
+            output.innerText = `HTTP ${response.status}: ${text}`;
+            return;
+        }
 
         const data = await response.json();
         output.innerText = JSON.stringify(data, null, 2);
@@ -41,6 +51,12 @@ sqlBtn.addEventListener("click", async () => {
             `${API_BASE}/sql/${encodedQuery}`,
             { method: "GET" }
         );
+
+        if (!response.ok) {
+            const text = await response.text();
+            output.innerText = `HTTP ${response.status}: ${text}`;
+            return;
+        }
 
         const data = await response.json();
         output.innerText = JSON.stringify(data, null, 2);

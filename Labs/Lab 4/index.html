@@ -7,5 +7,20 @@
 </head>
 <body>
     <h1>Lab 4</h1>
+    <button id="server1Btn" type="button">Go to Server 1</button>
+    <button id="server2Btn" type="button">Go to Server 2</button>
+
+    <script>
+        const SERVER_1_URL = "./Server1/index.html";
+        const SERVER_2_URL = "http://localhost:8081/lab4/api/v1/sql/select%20*%20from%20patient";
+
+        document.getElementById("server1Btn").addEventListener("click", () => {
+            window.location.href = SERVER_1_URL;
+        });
+
+        document.getElementById("server2Btn").addEventListener("click", () => {
+            window.location.href = SERVER_2_URL;
+        });
+    </script>
 </body>
 </html>
