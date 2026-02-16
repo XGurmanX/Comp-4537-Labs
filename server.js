@@ -13,6 +13,7 @@ app.use("/Lab0", express.static(path.join(__dirname, "Labs", "Lab 0")));
 app.use("/Lab1", express.static(path.join(__dirname, "Labs", "Lab 1")));
 app.use("/Lab2", express.static(path.join(__dirname, "Labs", "Lab 2")));
 app.use("/Lab3", express.static(path.join(__dirname, "Labs", "Lab 3")));
+app.use("/Lab4", express.static(path.join(__dirname, "Labs", "Lab 4")));
 
 // Optional: redirect root to home
 app.get("/", (req, res) => {
