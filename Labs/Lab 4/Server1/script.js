@@ -6,9 +6,7 @@ const apiOverride = new URLSearchParams(window.location.search).get("api");
 
 const API_BASE = apiOverride
     ? decodeURIComponent(apiOverride)
-    : (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-        ? LOCAL_API_BASE
-        : PROD_API_BASE);
+    : PROD_API_BASE;
 
 // ===== ELEMENTS =====
 const insertBtn = document.getElementById("insertBtn");
