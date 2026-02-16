@@ -1,9 +1,14 @@
 // ===== CONFIG =====
 // Attribution: Generated with AI assistance and manually verified/edited.
-const API_BASE =
-    window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-        ? "http://localhost:8081/lab4/api/v1"
-        : "https://YOUR_SERVER2_DOMAIN/lab4/api/v1";
+const LOCAL_API_BASE = "http://localhost:8081/lab4/api/v1";
+const PROD_API_BASE = "https://comp-4537.gurmanpannu.dev/Lab4/Server1/index.html";
+const apiOverride = new URLSearchParams(window.location.search).get("api");
+
+const API_BASE = apiOverride
+    ? decodeURIComponent(apiOverride)
+    : (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+        ? LOCAL_API_BASE
+        : PROD_API_BASE);
 
 // ===== ELEMENTS =====
 const insertBtn = document.getElementById("insertBtn");
