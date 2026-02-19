@@ -57,6 +57,7 @@ sqlBtn.addEventListener("click", async () => {
       return;
     } else if (method === "DELETE" || method === "DROP") {
       output.innerText = "DELETE and DROP are not allowed";
+      return;
     }
     const data = await response.json();
     output.innerText = JSON.stringify(data, null, 2);
