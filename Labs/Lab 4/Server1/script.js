@@ -1,5 +1,12 @@
 // ===== CONFIG =====
-const API_BASE = "https://comp-4537.gurmanpannu.dev/";
+// Attribution: Generated with AI assistance and manually verified/edited.
+const LOCAL_API_BASE = "http://localhost:8081/lab4/api/v1";
+const PROD_API_BASE = "https://comp-4537-lab4-server2-487786616688.us-west1.run.app/lab4/api/v1";
+const apiOverride = new URLSearchParams(window.location.search).get("api");
+
+const API_BASE = apiOverride
+    ? decodeURIComponent(apiOverride)
+    : PROD_API_BASE;
 
 // ===== ELEMENTS =====
 const insertBtn = document.getElementById("insertBtn");
@@ -14,6 +21,12 @@ insertBtn.addEventListener("click", async () => {
         const response = await fetch(`${API_BASE}/insert`, {
             method: "POST"
         });
+
+        if (!response.ok) {
+            const text = await response.text();
+            output.innerText = `HTTP ${response.status}: ${text}`;
+            return;
+        }
 
         const data = await response.json();
         output.innerText = JSON.stringify(data, null, 2);
@@ -41,6 +54,12 @@ sqlBtn.addEventListener("click", async () => {
             `${API_BASE}/sql/${encodedQuery}`,
             { method: "GET" }
         );
+
+        if (!response.ok) {
+            const text = await response.text();
+            output.innerText = `HTTP ${response.status}: ${text}`;
+            return;
+        }
 
         const data = await response.json();
         output.innerText = JSON.stringify(data, null, 2);
