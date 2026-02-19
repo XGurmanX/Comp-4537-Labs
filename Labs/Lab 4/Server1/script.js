@@ -1,5 +1,5 @@
 // ===== CONFIG =====
-const API_BASE = "https://YOUR_SERVER2_DOMAIN/lab5/api/v1";
+const API_BASE = "https://comp-4537.gurmanpannu.dev/";
 
 // ===== ELEMENTS =====
 const insertBtn = document.getElementById("insertBtn");
