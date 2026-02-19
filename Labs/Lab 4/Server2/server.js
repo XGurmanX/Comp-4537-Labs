@@ -49,6 +49,21 @@ async function ensurePatientTable() {
       date_of_birth DATE NOT NULL
     ) ENGINE=InnoDB
   `);
+
+  const [columns] = await writePool.query("SHOW COLUMNS FROM patient");
+  const columnNames = new Set(columns.map((column) => column.Field));
+
+  if (!columnNames.has("full_name")) {
+    await writePool.query(
+      "ALTER TABLE patient ADD COLUMN full_name VARCHAR(200) NULL",
+    );
+  }
+
+  if (!columnNames.has("date_of_birth")) {
+    await writePool.query(
+      "ALTER TABLE patient ADD COLUMN date_of_birth DATE NULL",
+    );
+  }
 }
 
 http
