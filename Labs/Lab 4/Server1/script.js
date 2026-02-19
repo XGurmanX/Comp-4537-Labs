@@ -1,6 +1,6 @@
 // ===== CONFIG =====
 // Attribution: Generated with AI assistance and manually verified/edited.
-const LOCAL_API_BASE = "http://localhost:8081/lab4/api/v1";
+const LOCAL_API_BASE = "http://localhost:8080/lab4/api/v1";
 const PROD_API_BASE =
   "https://comp-4537-lab4-server2-487786616688.us-west1.run.app/lab4/api/v1";
 const apiOverride = new URLSearchParams(window.location.search).get("api");
@@ -51,12 +51,13 @@ sqlBtn.addEventListener("click", async () => {
       method: "GET",
     });
 
-    if (!response.ok && !(method === "DELETE" || method === "DROP")) {
+    if (!response.ok) {
       const text = await response.text();
       output.innerText = `HTTP ${response.status}: ${text}`;
       return;
+    } else if (method === "DELETE" || method === "DROP") {
+      output.innerText = "DELETE and DROP are not allowed";
     }
-
     const data = await response.json();
     output.innerText = JSON.stringify(data, null, 2);
   } catch (err) {
