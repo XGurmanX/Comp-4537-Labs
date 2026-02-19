@@ -51,12 +51,13 @@ sqlBtn.addEventListener("click", async () => {
       method: "GET",
     });
 
-    if (!response.ok && !(method === "DELETE" || method === "DROP")) {
+    if (!response.ok) {
       const text = await response.text();
       output.innerText = `HTTP ${response.status}: ${text}`;
       return;
+    } else if (method === "DELETE" || method === "DROP") {
+      output.innerText = "DELETE and DROP are not allowed";
     }
-
     const data = await response.json();
     output.innerText = JSON.stringify(data, null, 2);
   } catch (err) {
