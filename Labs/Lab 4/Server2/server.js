@@ -31,7 +31,10 @@ function setCorsHeaders(res) {
 
 async function ensurePools() {
   if (!writePool) {
-    writePool = await createPool(process.env.WRITE_USER, process.env.WRITE_PASS);
+    writePool = await createPool(
+      process.env.WRITE_USER,
+      process.env.WRITE_PASS,
+    );
   }
   if (!readPool) {
     readPool = await createPool(process.env.READ_USER, process.env.READ_PASS);
@@ -57,7 +60,10 @@ http
       return;
     }
 
-    const reqUrl = new URL(req.url, `http://${req.headers.host || "localhost"}`);
+    const reqUrl = new URL(
+      req.url,
+      `http://${req.headers.host || "localhost"}`,
+    );
     const pathname = reqUrl.pathname;
 
     try {
@@ -67,12 +73,16 @@ http
         await ensurePatientTable();
         await writePool.query(
           "INSERT INTO patient (full_name, date_of_birth) VALUES ?",
-          [PATIENT_ROWS]
+          [PATIENT_ROWS],
         );
         sendJson(res, 200, {
           message: messages.insertSuccess,
           tableStatus: messages.tableCreated,
           insertedRows: PATIENT_ROWS.length,
+          patientRows: PATIENT_ROWS.map(([full_name, date_of_birth]) => ({
+            full_name,
+            date_of_birth,
+          })),
         });
         return;
       }
@@ -88,11 +98,17 @@ http
       sendJson(res, 404, { error: messages.notFound });
     } catch (error) {
       const code = error && error.code ? error.code : "";
-      if (code === "ER_TABLEACCESS_DENIED_ERROR" || code === "ER_DBACCESS_DENIED_ERROR") {
+      if (
+        code === "ER_TABLEACCESS_DENIED_ERROR" ||
+        code === "ER_DBACCESS_DENIED_ERROR"
+      ) {
         sendJson(res, 403, { error: messages.onlySelectAllowed });
         return;
       }
-      sendJson(res, 500, { error: messages.internalError, details: error.message });
+      sendJson(res, 500, {
+        error: messages.internalError,
+        details: error.message,
+      });
     }
   })
   .listen(PORT, () => {
