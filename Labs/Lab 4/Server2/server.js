@@ -8,9 +8,10 @@ const messages = require("./lang/messages");
 const PORT = process.env.PORT || 8080;
 const API_PREFIX = process.env.API_PREFIX || "/lab4/api/v1";
 const PATIENT_ROWS = [
-  ["John", "Doe", 30],
-  ["Jane", "Smith", 25],
-  ["Alex", "Johnson", 34],
+  ["Sara Brown", "1901-01-01"],
+  ["John Smith", "1941-01-01"],
+  ["Jack Ma", "1961-01-30"],
+  ["Elon Musk", "1999-01-01"],
 ];
 
 let writePool;
@@ -41,9 +42,8 @@ async function ensurePatientTable() {
   await writePool.query(`
     CREATE TABLE IF NOT EXISTS patient (
       id INT AUTO_INCREMENT PRIMARY KEY,
-      first_name VARCHAR(100) NOT NULL,
-      last_name VARCHAR(100) NOT NULL,
-      age INT NOT NULL
+      full_name VARCHAR(200) NOT NULL,
+      date_of_birth DATE NOT NULL
     ) ENGINE=InnoDB
   `);
 }
@@ -65,9 +65,10 @@ http
 
       if (req.method === "POST" && pathname === `${API_PREFIX}/insert`) {
         await ensurePatientTable();
-        await writePool.query("INSERT INTO patient (first_name, last_name, age) VALUES ?", [
-          PATIENT_ROWS,
-        ]);
+        await writePool.query(
+          "INSERT INTO patient (full_name, date_of_birth) VALUES ?",
+          [PATIENT_ROWS]
+        );
         sendJson(res, 200, {
           message: messages.insertSuccess,
           tableStatus: messages.tableCreated,
